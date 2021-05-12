@@ -1,0 +1,7 @@
+{
+  "name": "Tp_etudiant",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

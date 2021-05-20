@@ -3,7 +3,14 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    
+    <form [formGroup]="search" class="ligne" vali >
+      <ion-searchbar show-cancel-button="focus" enterkeyhint="enter" formControlName="recherche" type="text" cancel-button-text="Custom Cancel"></ion-searchbar>
+      <ion-buttons (click)="ChercherEtudiant()">
+        <ion-icon slot="end" name="search"></ion-icon>
+      </ion-buttons>
+    </form>
+
   </ion-toolbar>
 </ion-header>
 
@@ -13,9 +20,56 @@
       <ion-title size="large">{{ folder }}</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  
+    <ion-card-content>
+    <ion-item-sliding *ngFor="let etud of etuds"  ion-item>
+     
+    
+      <ion-card >
+        <ion-item>
+      <form [formGroup]="editEtudiant" (ngSubmit)="editForm(etud.cle_etud)" vali >
+      
+      <ion-item lines="none" >
+        <ion-label  color="dark" position='floating'>Nom: {{etud.nom}}</ion-label>
+        <ion-input  color="dark" formControlName="nom"  type="text" placeholder="nouveau nom" ></ion-input>
+      </ion-item >
+      <ion-item lines="none">
+        <ion-label color="dark" position='floating'>Telephone: {{etud.telephone}}</ion-label>
+        <ion-input color="dark" formControlName="telephone" type="text" placeholder="nouveau phone" ></ion-input>
+      </ion-item >
+      <ion-item lines="none">
+        <ion-label color="dark" position='floating'>Matricule: {{etud.matricule}} </ion-label>
+        <ion-input color="dark" formControlName="matricule" type="text" placeholder="nouveau matricule"></ion-input>
+      </ion-item >
+      <ion-item lines="none">
+        <ion-label color="dark" position='floating'>Presentation: {{etud.presentation}}</ion-label>
+        <ion-input  color="dark" formControlName="presentation" type="text" placeholder="nouvelle presentation" ></ion-input>
+      </ion-item >
+      <ion-item lines="none">
+        <ion-label color="dark" position='floating'>cle: {{etud.cle_etud}}</ion-label>
+      </ion-item >
+      
+    
+      </form>
+    </ion-item>
+    </ion-card>
+    
+    
+    <ion-item-options>
+      <ion-item-option color="danger" (click)="presentAlertSupp(etud.cle_etud)" >
+        <ion-icon slot="top" name="trash"></ion-icon>
+        Supp
+      </ion-item-option>
+      <ion-item-option color="secondary" (click)="presentAlertEdit(etud.cle_etud)"  >
+        <ion-icon slot="top" name="create"></ion-icon>
+        Edit
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-card-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button  (click)="openModal()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 </ion-content>

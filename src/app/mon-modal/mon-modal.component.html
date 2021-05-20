@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajout d'un nouvel etudiant</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+<form [formGroup]="etudiants" (ngSubmit)="logForm()" >
+<ion-item >
+  <ion-label color="dark" position='floating'>Nom</ion-label>
+  <ion-input  color="dark" formControlName="nom" type="text" placeholder="Entrer votre nom" ></ion-input>
+</ion-item>
+
+<ion-item >
+  <ion-label color="dark" position='floating'>Telephone</ion-label>
+  <ion-input color="dark" type="text" formControlName="telephone" placeholder="+237 699550516"  ></ion-input>
+</ion-item>
+
+<ion-item >
+  <ion-label color="dark" position='floating'>Matricule</ion-label>
+  <ion-input  color="dark" type="text" formControlName="matricule" placeholder="17M9556" ></ion-input>
+</ion-item>
+
+<ion-item >
+  <ion-label color="dark" position='floating'>Presentation</ion-label>
+  <ion-textarea  color="dark" type="text" formControlName="presentation" placeholder="@ex: j'ai etudier a l'universite ngoua "  ></ion-textarea>
+</ion-item>
+
+<ion-item lines="none">
+  <ion-button color="dark" slot="end" fill="clear">Merci de bien vouloir remplir tous les champs :) .</ion-button>
+</ion-item>
+
+<ion-button  type="submit" [disabled]="!etudiants.valid" color="dark"  expand="block"  shape="round" fill="outline" >Ajouter</ion-button>
+<br>
+<ion-button color="tertiary" expand="block" shape="round" (click)="dismissModalcancel()">Cancel</ion-button>
+</form>
+<div class="flex">
+  <ion-button color="tertiary" shape="round">
+    <ion-icon slot="start" name="logo-facebook"></ion-icon>
+    Facebook
+  </ion-button>
+  <ion-button color="danger" shape="round">
+    <ion-icon slot="start" name="logo-google"></ion-icon>
+    Google
+  </ion-button>
+</div>
+
+</ion-content>

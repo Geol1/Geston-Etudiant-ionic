@@ -1,5 +1,19 @@
 ion-menu-button {
   color: var(--ion-color-primary);
+  margin: 0px;
+  padding: 0px;
+}
+ion-card-content{
+  width: 100%;
+  background: linear-gradient(rgb(189, 189, 219), rgb(241, 210, 210));
+}
+input[type=search] {
+  border: 1px dotted #999;
+  border-radius: 0;
+
+}
+ion-label ion-item ion-item-sliding{
+  width: 100%;
 }
 
 #container {
